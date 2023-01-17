@@ -1,5 +1,5 @@
 public class Solution {
-    public static int schet = 0;
+    public static int counter = 0;
     public static char[][] charTwist(char[][] input){
         char[][] output = new char[input.length][];
         for (int i = 0; i < input.length; i++) {
@@ -32,11 +32,11 @@ public class Solution {
     }
     public static char[][] PictureBuilder(char[] ch, char[][] picture){
 
-        if(schet == 0) {
+        if(counter == 0) {
             int dots = 1;
-            if (ch[schet] == 89){
-                for (int i = 0; i < highElement(ch.length - schet); i++) {
-                    if (i < (highElement(ch.length - schet) / 2)) {
+            if (ch[counter] == 89){
+                for (int i = 0; i < highElement(ch.length - counter); i++) {
+                    if (i < (highElement(ch.length - counter) / 2)) {
                         for (int j = 0; j < widthCheck(ch); j++){
                             if(j == (((widthCheck(ch) - 1) / 2))){
                                 picture[i][j] = 124;
@@ -61,7 +61,7 @@ public class Solution {
                 }
             }
             else {
-                for (int i = 0; i < highElement(ch.length - schet); i++){
+                for (int i = 0; i < highElement(ch.length - counter); i++){
                     for (int j = 0; j < widthCheck(ch); j++){
                         if(j == (((widthCheck(ch) - 1) / 2))){
                             picture[i][j] = 124;
@@ -72,19 +72,19 @@ public class Solution {
                     }
                 }
             }
-            schet = schet + 1;
+            counter = counter + 1;
 
             PictureBuilder(ch, picture);
         }
-        else if(schet < ch.length) {
+        else if(counter < ch.length) {
             double high = 0;
-            for(int i = 0; i < schet; i++){
+            for(int i = 0; i < counter; i++){
                 high = high + highElement(ch.length - i);
             }
 
-            if (ch[schet] == 89){
-                for(int i = (int) high; i < high + highElement(ch.length - schet); i++){
-                    if(i < high + highElement(ch.length - schet) / 2){
+            if (ch[counter] == 89){
+                for(int i = (int) high; i < high + highElement(ch.length - counter); i++){
+                    if(i < high + highElement(ch.length - counter) / 2){
                         for (int j = 0; j < widthCheck(ch); j++){
                             if(picture[i - 1][j] == 46){
                                 picture[i][j] = 46;
@@ -119,7 +119,7 @@ public class Solution {
                 }
             }
             else {
-                for(int i = (int) high; i < high + highElement(ch.length - schet); i++){
+                for(int i = (int) high; i < high + highElement(ch.length - counter); i++){
                     for (int j = 0; j < widthCheck(ch); j++){
                         if(picture[i - 1][j] == 46){
                             picture[i][j] = 46;
@@ -130,7 +130,7 @@ public class Solution {
                     }
                 }
             }
-            schet = schet + 1;
+            counter = counter + 1;
             PictureBuilder(ch, picture);
         }
 
